@@ -22,3 +22,21 @@ corepack pnpm install --frozen-lockfile
 
 Commit changes in small steps using Conventional Commits, for example
 `chore: configure TypeScript`.
+
+### TypeScript and build
+
+```sh
+pnpm typecheck
+pnpm build
+pnpm dev
+```
+
+TypeScript checks the browser library and Node.js tooling separately. The library
+uses strict checking, native ESM imports, and DOM types without ambient Node.js
+globals. `pnpm dev` rebuilds the library when sources change.
+
+[Rslib](https://rslib.rs/guide/start/) generates ESM and declarations in `dist/`.
+The entry point is intentionally empty until the plugin is implemented. Runtime
+dependencies (including the future Ivya dependency) and peers (including Chai)
+remain external to the bundle. Their versions and compatibility will be established
+when the plugin and its browser tests are added.
