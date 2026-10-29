@@ -13,12 +13,14 @@ is disabled, and the plugin API is not implemented yet.
 ## Development
 
 Use Node.js 22.12.0 or newer and pnpm 10.14.0 (pinned in `packageManager`).
-With nvm installed:
 
 ```sh
-nvm use
-corepack pnpm install --frozen-lockfile
+pnpm install --frozen-lockfile
 ```
+
+Dependency ranges use `^`; the committed lockfile records the exact versions for
+reproducible installs. The Node.js requirement is declared in `engines` and
+enforced by pnpm through `engine-strict`.
 
 Commit changes in small steps using Conventional Commits, for example
 `chore: configure TypeScript`.
