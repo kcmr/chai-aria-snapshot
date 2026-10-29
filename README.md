@@ -40,3 +40,25 @@ The entry point is intentionally empty until the plugin is implemented. Runtime
 dependencies (including the future Ivya dependency) and peers (including Chai)
 remain external to the bundle. Their versions and compatibility will be established
 when the plugin and its browser tests are added.
+
+### Lint and formatting
+
+```sh
+pnpm lint
+pnpm format
+pnpm format:check
+pnpm check
+```
+
+[Oxlint](https://oxc.rs/docs/guide/usage/linter/type-aware.html) uses
+`oxlint-tsgolint` for type-aware rules, including `no-floating-promises` and
+`no-misused-promises`. Asynchronous Chai assertions must be awaited.
+[Oxfmt](https://oxc.rs/docs/guide/usage/formatter/embedded-formatting.html) handles
+formatting, with embedded language support enabled for future Lit demos. The
+pnpm-generated lockfile is excluded from formatting.
+
+`pnpm check` runs format checking, lint, type checking, and the build without
+rewriting source files. Build artifacts go to the ignored `dist/` directory.
+Browser tests and their `test` script will be added with the plugin; this initial
+setup does not yet validate ARIA matching or Chai compatibility. Formatting of
+real Lit fixtures will also be checked when the demos are added.
