@@ -59,6 +59,15 @@ pnpm check
 formatting, with embedded language support enabled for future Lit demos. The
 pnpm-generated lockfile is excluded from formatting.
 
+VS Code recommends the official `oxc.oxc-vscode` extension. The workspace settings
+apply Oxlint fixes first and Oxfmt formatting second on save, including Auto Save.
+`editor.formatOnSave` is disabled because formatting runs through
+`source.format.oxc`, avoiding a second formatting pass. Manual Format Document
+also uses Oxfmt. Both tools discover their project configuration automatically:
+`.oxlintrc.json` for lint and `.oxfmtrc.json` for formatting, including indentation
+and line endings. Type-aware linting comes from the root Oxlint configuration.
+See the [extension's save-action documentation](https://github.com/oxc-project/oxc-vscode#oxfmt).
+
 `pnpm check` runs format checking, lint, type checking, and the build without
 rewriting source files. Build artifacts go to the ignored `dist/` directory.
 Browser tests and their `test` script will be added with the plugin; this initial
