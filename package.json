@@ -15,7 +15,6 @@
     }
   },
   "scripts": {
-    "prepare": "lefthook install",
     "dev": "rslib build --watch",
     "build": "rslib build",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.tools.json && tsc --noEmit -p test/tsconfig.json && tsc --noEmit -p demos/snapshot-output/tsconfig.json",
@@ -63,6 +62,9 @@
   "pnpm": {
     "overrides": {
       "@web/browser-logs>errorstacks": "2.4.1"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "lefthook"
+    ]
   }
 }
