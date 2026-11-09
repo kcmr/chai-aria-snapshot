@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/kcmr/chai-aria-snapshot/compare/1.0.1...1.0.2) (2026-11-09)
+
+
+### Bug Fixes
+
+* **ci:** use npm 11 for trusted publishing ([fffffd3](https://github.com/kcmr/chai-aria-snapshot/commit/fffffd3c0ae3b5c362baafa6984e2653147f72d7))
+
 ## [1.0.1](https://github.com/kcmr/chai-aria-snapshot/compare/1.0.0...1.0.1) (2026-11-09)
 
 
