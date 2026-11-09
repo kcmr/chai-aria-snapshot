@@ -16,12 +16,16 @@
 - [x] Integrate semantic-release with GitHub Actions for automated versioning,
       tags without `v`, a committed CHANGELOG, and npm publication via OIDC.
 - [x] Remove `private: true` and complete package metadata for publication.
-- [ ] Bootstrap the first npm release, configure its trusted publisher, and
-      verify GitHub permissions following [the release guide](releases.md).
-      The repository is public and had no Actions variables, rulesets, or main
-      branch protection when inspected during setup. npm returned E404 for the
-      package name. Recheck these settings before activation.
+- [x] Publish 1.0.0, configure its npm trusted publisher, and verify GitHub push
+      permissions. The first CI attempt successfully exchanged the OIDC token.
+- [ ] Recover the interrupted 1.0.1 publication: the remote release commit and
+      tag exist, but npm publication failed with ENEEDAUTH using npm 10.9.9.
+      The release job now installs npm 11 explicitly, since pnpm's dependency
+      layout did not expose the plugin's bundled npm to the publish subprocess.
 - [ ] Verify the first automated release after npm publishing setup is complete.
+- [ ] Verify release App authentication with protected `main`, including the
+      generated commit and version-tag creation. External App credentials and
+      ruleset configuration are not yet confirmed.
 
 ## Completed baseline
 

@@ -67,3 +67,17 @@ test TypeScript program; keep snapshot expectations in the `expect` style.
 The browser runner uses a targeted pnpm override for `errorstacks` 2.4.1:
 2.4.2 requires Node 24, while this project supports Node 22. Remove the override
 when upstream restores compatibility or the project's Node requirement changes.
+
+# Release implementation
+
+The release job installs npm 11 explicitly because OIDC publishing requires
+npm >=11.5.1. With pnpm's dependency layout, the plugin's bundled npm was not
+exposed to the publish subprocess, which used the runner's npm 10.9.9 instead.
+Do not infer the publishing CLI version from the plugin's dependency version.
+
+GitHub authentication uses an installation token when `RELEASE_APP_CLIENT_ID`
+is set, with `RELEASE_APP_PRIVATE_KEY` as the credential. Both checkout and
+semantic-release use the same token. Otherwise, the job uses `github.token`.
+This fallback does not bypass branch protection. The release App needs direct
+push permission for the generated CHANGELOG/package commit; PR-only bypass
+is insufficient. npm authentication remains OIDC, independently of the App.
