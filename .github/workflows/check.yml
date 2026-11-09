@@ -49,19 +49,33 @@ jobs:
     env:
       LEFTHOOK: '0'
     steps:
+      - name: Create release GitHub App token
+        if: ${{ vars.RELEASE_APP_CLIENT_ID != '' }}
+        id: release-app
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+          permission-contents: write
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
+          token: ${{ steps.release-app.outputs.token || github.token }}
       - uses: pnpm/action-setup@v5
       - uses: actions/setup-node@v6
         with:
           node-version: '22'
           package-manager-cache: false
+      - name: Install npm with trusted publishing support
+        # Node 22 includes npm 10; OIDC publishing requires npm >=11.5.1.
+        run: |
+          npm install --global npm@11
+          npm --version
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build package
         run: pnpm build
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.release-app.outputs.token || github.token }}
         run: pnpm release
