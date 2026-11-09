@@ -48,6 +48,10 @@ Tests cover Chai 6 directly and open-wc's bundled Chai 4; Chai 5 is not currentl
 included in the declared peer range. Compile-only cases live in
 `test/types/public-types.ts`.
 
+CI uses the official Playwright Docker image with browsers and system dependencies
+preinstalled. Keep its tag aligned with the resolved Playwright version in
+`pnpm-lock.yaml` when updating dependencies.
+
 Tests consume the built package declarations: run `pnpm build` before standalone
 type checks on a fresh checkout. The compile-only cases share the test TypeScript
 program with open-wc; they do not establish isolated consumer compatibility.

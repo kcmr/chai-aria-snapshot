@@ -37,5 +37,6 @@ This repository uses [Conventional Commits](https://www.conventionalcommits.org/
 - Run `pnpm check` to verify formatting, browser tests, lint, and types.
 - Include any relevant testing notes in the PR description.
 
-Automated checks should pass before merging. If you have trouble running
-a check, mention it in the PR.
+The [CI workflow](.github/workflows/check.yml) runs `pnpm check` for pull requests
+to `main` and pushes to `main`. Checks should pass before merging. If you have
+trouble running a check locally, mention it in the PR.
