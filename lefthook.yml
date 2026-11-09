@@ -1,0 +1,34 @@
+glob_matcher: doublestar
+
+pre-commit:
+  piped: true
+  jobs:
+    - name: format
+      run: pnpm format:check
+    - name: lint
+      glob:
+        - '**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}'
+        - '**/tsconfig*.json'
+        - .oxlintrc.json
+        - package.json
+        - pnpm-lock.yaml
+      exclude: '**/__snapshots__/**'
+      run: pnpm lint
+    - name: typecheck
+      glob:
+        - '**/*.{ts,tsx,mts,cts}'
+        - '**/web-test-runner.config.mjs'
+        - '**/tsconfig*.json'
+        - package.json
+        - pnpm-lock.yaml
+      run: pnpm typecheck
+
+commit-msg:
+  jobs:
+    - name: conventional-commit
+      run: pnpm exec commitlint --edit "{1}"
+
+pre-push:
+  jobs:
+    - name: check
+      run: pnpm check

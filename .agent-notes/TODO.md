@@ -5,7 +5,7 @@
 - [x] Add GitHub Actions PR checks for `pnpm check`, using the Playwright image
       with Chromium, Firefox, WebKit, and system dependencies preinstalled.
       Reference the workflow from CONTRIBUTING.md.
-- [ ] Verify the first GitHub Actions run on a PR.
+- [x] Verify the first GitHub Actions run on a PR.
 - [ ] Configure Lefthook: run `pnpm check` before push, and typecheck, lint,
       and format before commit. Ensure built declarations exist for typecheck.
 - [ ] Add a commit-message hook to validate Conventional Commits, then document
