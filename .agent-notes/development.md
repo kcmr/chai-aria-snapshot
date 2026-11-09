@@ -31,8 +31,6 @@ does not support the `[invalid]` snapshot attribute.
 
 # Validation
 
-See [pending work](TODO.md) for the planned Chai compatibility matrix.
-
 Behavior must be tested in real browsers. Keep the test runner configuration
 separate from the library build. Use concurrency 1: parallel background pages
 previously caused open-wc fixtures to stall waiting for animation frames.
@@ -44,8 +42,10 @@ only for dependency versions and browser scenarios actually exercised.
 `pnpm test` builds the package and runs the browser suite through its public
 exports in Chromium, Firefox, and WebKit. See [Development](../README.md#development)
 for setup and commands.
-Tests cover Chai 6 directly and open-wc's bundled Chai 4; Chai 5 is not currently
-included in the declared peer range. Compile-only cases live in
+The existing coverage is accepted for publication without a separate version
+matrix: Chai 6.3.0 directly and open-wc's ESM bundle of Chai 4.3.4. This does not
+validate every version in the peer range or the original Chai 4 package's loading.
+Chai 5 is not included in the declared peer range. Compile-only cases live in
 `test/types/public-types.ts`.
 
 CI uses the official Playwright Docker image with browsers and system dependencies

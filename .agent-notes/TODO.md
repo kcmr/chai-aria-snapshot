@@ -6,44 +6,29 @@
       with Chromium, Firefox, WebKit, and system dependencies preinstalled.
       Reference the workflow from CONTRIBUTING.md.
 - [x] Verify the first GitHub Actions run on a PR.
-- [ ] Configure Lefthook: run `pnpm check` before push, and typecheck, lint,
+- [x] Configure Lefthook: run `pnpm check` before push, and typecheck, lint,
       and format before commit. Ensure built declarations exist for typecheck.
-- [ ] Add a commit-message hook to validate Conventional Commits, then document
+- [x] Add a commit-message hook to validate Conventional Commits, then document
       its setup and behavior in CONTRIBUTING.md.
 
 ## Releases
 
-- [ ] Integrate semantic-release with GitHub Actions for automated versioning
-      and releases.
-- [ ] Remove `private: true` from package.json before publishing the package.
-
-## Chai compatibility matrix
-
-- [ ] Validate the declared `^4.3.4 || ^6.3.0` peer range before publication.
-      Current coverage exercises Chai 6.3.0 directly and open-wc's ESM bundle of
-      Chai 4.3.4, rather than a full version matrix.
-- [ ] Run a small shared compatibility suite against the minimum and latest
-      available versions of each supported major, deduplicating identical versions.
-      Cover registration, asynchronous return values, negation, retries, and the
-      consumer's AssertionError with diff properties. Keep YAML visible in the tests.
-- [ ] Compile isolated consumers with their Chai type dependencies to check
-      declaration merging and the public Promise return type. Multiple global Chai
-      definitions in the main test project can mask consumer type incompatibilities.
-- [ ] Account for the original Chai 4 package's CommonJS/browser loading rather
-      than relying only on open-wc's repackaged ESM build.
-
-Keep version selection and loading in test tooling. Start the compatibility
-matrix in Chromium and retain the existing cross-browser ARIA behavior suite;
-do not introduce version branches or adapters into the plugin preemptively.
-
-Chai 5 remains outside the peer range. Adding it is a separate support decision.
+- [x] Integrate semantic-release with GitHub Actions for automated versioning,
+      tags without `v`, a committed CHANGELOG, and npm publication via OIDC.
+- [x] Remove `private: true` and complete package metadata for publication.
+- [ ] Bootstrap the first npm release, configure its trusted publisher, and
+      verify GitHub permissions following [the release guide](releases.md).
+      The repository is public and had no Actions variables, rulesets, or main
+      branch protection when inspected during setup. npm returned E404 for the
+      package name. Recheck these settings before activation.
+- [ ] Verify the first automated release after npm publishing setup is complete.
 
 ## Completed baseline
 
 - [x] Test through public package exports in Chromium, Firefox, and WebKit,
       including open Shadow DOM, slots, retries, negation, and assertion diffs.
 - [x] Cover Chai 6.3.0 directly and open-wc's ESM bundle of Chai 4.3.4,
-      including use of the consumer's AssertionError. The version matrix above
-      remains pending.
+      including use of the consumer's AssertionError. This coverage is accepted
+      for publication without a separate version matrix.
 - [x] Add compile-only public API checks in `test/types/public-types.ts`.
-      Isolated consumer type checks remain pending.
+      These share the test TypeScript program rather than isolated consumers.

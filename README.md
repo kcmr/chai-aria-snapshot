@@ -242,7 +242,7 @@ See [demos/snapshot-output](demos/snapshot-output) for examples of inline diffs 
 
 ### Prerequisites and setup
 
-- **Node.js**: Version matching `engines.node` in [package.json](package.json) (`>=22.12.0`).
+- **Node.js**: Version matching `engines.node` in [package.json](package.json).
 - **pnpm**: Version specified by `packageManager` in [package.json](package.json).
 - **Playwright browsers**: Required to run the test suite in Chromium, Firefox, and WebKit.
 
