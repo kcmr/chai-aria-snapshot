@@ -2,9 +2,12 @@
 
 ## Continuous integration
 
-- [ ] Add GitHub Actions PR checks for `pnpm check`, installing Chromium,
-      Firefox, WebKit, and their system dependencies. Update CONTRIBUTING.md
-      to reference the available checks once configured.
+- [x] Add GitHub Actions PR checks for `pnpm check`, installing Chromium,
+      Firefox, WebKit, and their system dependencies. Reference the workflow
+      from CONTRIBUTING.md.
+- [ ] Verify the first GitHub Actions run on a PR.
+- [ ] Configure Lefthook: run `pnpm check` before push, and typecheck, lint,
+      and format before commit. Ensure built declarations exist for typecheck.
 - [ ] Add a commit-message hook to validate Conventional Commits, then document
       its setup and behavior in CONTRIBUTING.md.
 
