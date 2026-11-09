@@ -6,5 +6,5 @@
   "endOfLine": "lf",
   "singleQuote": true,
   "embeddedLanguageFormatting": "auto",
-  "ignorePatterns": ["pnpm-lock.yaml"]
+  "ignorePatterns": ["pnpm-lock.yaml", "**/__snapshots__/**"]
 }

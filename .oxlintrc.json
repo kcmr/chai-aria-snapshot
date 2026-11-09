@@ -11,5 +11,10 @@
     "typescript/no-floating-promises": ["error", { "ignoreVoid": false }],
     "typescript/no-misused-promises": "error"
   },
-  "ignorePatterns": ["dist/**", "coverage/**", "node_modules/**"]
+  "ignorePatterns": [
+    "dist/**",
+    "coverage/**",
+    "node_modules/**",
+    "**/__snapshots__/**"
+  ]
 }

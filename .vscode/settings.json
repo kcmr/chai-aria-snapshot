@@ -1,8 +1,16 @@
 {
+  "js/ts.experimental.useTsgo": true,
+  "js/ts.tsdk.path": "./node_modules/typescript",
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.oxc": "always",
     "source.format.oxc": "always"
+  },
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#12a594",
+    "statusBar.foreground": "#ffffff",
+    "statusBar.border": "#12a594",
+    "statusBarItem.hoverBackground": "#ffffff22"
   }
 }

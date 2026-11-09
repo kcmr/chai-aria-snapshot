@@ -2,8 +2,14 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "rootDir": ".",
+    "allowJs": true,
+    "checkJs": true,
     "lib": ["ES2022"],
     "types": ["node"]
   },
-  "include": ["rslib.config.ts"]
+  "include": [
+    "rslib.config.ts",
+    "web-test-runner.config.mjs",
+    "demos/*/web-test-runner.config.mjs"
+  ]
 }

@@ -4,7 +4,8 @@ dist/
 .rslib/
 .rstack/
 coverage/
+demos/snapshot-output/*.log
 *.tgz
 *.tsbuildinfo
 .DS_Store
-!.vscode/settings.json
+/.vscode/settings.json

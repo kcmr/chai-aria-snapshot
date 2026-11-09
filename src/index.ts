@@ -1,2 +1,2 @@
-// The Chai plugin will be exported here in the next implementation step.
-export {};
+export { chaiAriaSnapshot } from './chai-plugin.js';
+export type { AriaSnapshotOptions } from './chai-plugin.js';
